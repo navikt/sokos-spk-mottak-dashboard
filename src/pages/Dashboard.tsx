@@ -9,7 +9,6 @@ import {
 } from "../api/apiService";
 import { JobTaskInfo } from "../types/JobTaskInfo";
 import styles from "./Dashboard.module.css";
-import DateRangePicker from "./components/DateRangePicker";
 import JobCard from "./components/JobCard";
 
 const Dashboard = () => {
@@ -22,7 +21,7 @@ const Dashboard = () => {
   const [disabledButtons, setDisabledButtons] = useState<{
     [key: string]: { disabled: boolean; timestamp: number };
   }>({});
-  const [dateRange, setDateRange] = useState<{
+  const [dateRange] = useState<{
     fromDate: string | null;
     toDate: string | null;
   }>({
@@ -182,15 +181,7 @@ const Dashboard = () => {
                     task.taskName === "grensesnittAvstemming",
                 )}
                 className={styles.grensesnittcard}
-              >
-                <div className={styles.datePickerWrapper}>
-                  <DateRangePicker
-                    onDateChange={(fromDate, toDate) =>
-                      setDateRange({ fromDate, toDate })
-                    }
-                  />
-                </div>
-              </JobCard>
+              ></JobCard>
             </div>
           </>
         ) : (
